@@ -12,9 +12,32 @@ namespace DForm
         private string title;
         private int _currentIndex;
 
-        public Questions( Form form ) : base( form )
+        public Questions( Form form ) 
+            : base( form )
         {
             Title = form.Title;
+        }
+
+        public Questions(Form form, bool civilStatus)
+            : base(form)
+        {
+            Title = form.Title;
+
+            OpenQuestion qOpen = (OpenQuestion)this.AddNewQuestion(typeof(OpenQuestion));
+            qOpen.Title = "Entrez votre nom : ";
+            qOpen.AllowEmptyAnswer = false;
+
+            OpenQuestion qOpen1 = (OpenQuestion)this.AddNewQuestion(typeof(OpenQuestion));
+            qOpen1.Title = "Entrez votre prenom :";
+            qOpen1.AllowEmptyAnswer = false;
+
+            OpenQuestion qOpen2 = (OpenQuestion)this.AddNewQuestion(typeof(OpenQuestion));
+            qOpen2.Title = "Quelle est votre date de naissance ? ";
+            qOpen2.AllowEmptyAnswer = false;
+
+            BooleanQuestion qBool3 = (BooleanQuestion)this.AddNewQuestion(typeof(BooleanQuestion));
+            qBool3.Title = "Quel est votre sexe ? ";
+            qBool3.AllowEmptyAnswer = false;
         }
 
         public Boolean Contains(QuestionBase questionBase)

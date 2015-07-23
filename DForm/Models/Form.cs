@@ -20,6 +20,12 @@ namespace DForm
             _formAnswer = new List<FormAnswer>();
         }
 
+        public Form(bool civilStatus)
+        {
+            _formAnswer = new List<FormAnswer>();
+            Questions = new Questions(this, civilStatus);
+        }
+
         public FormAnswer FindOrCreateAnswer( string answerTitle )
         {
             if( answerTitle == null ) throw new ArgumentNullException();

@@ -58,6 +58,16 @@ namespace DForm.Tests
         }
 
         [Test]
+        public void CreateQuestionsWithCivilStatus()
+        {
+            Form f = new Form(true);
+            f.Questions.Title = "HG67-Bis";
+            Assert.AreEqual("HG67-Bis", f.Title);
+
+            Assert.IsNotEmpty(f.Questions.Dictionary);
+        }
+
+        [Test]
         public void LaTotale()
         {
             Form f = new Form();
@@ -141,7 +151,7 @@ namespace DForm.Tests
 
             OpenAnswer emilieAnswer = (OpenAnswer)theAnswerOfEmilieToQOpen;
             emilieAnswer.FreeAnswer = "I am very happy to be here";
-            //
+            
             AnswerBase theAnswerOfEmilieToQBool = a.FindAnswer( qBool );
             if( theAnswerOfEmilieToQBool == null )
             {
@@ -257,8 +267,6 @@ namespace DForm.Tests
             BooleanQuestion q2Bool = (BooleanQuestion)f.Questions.AddNewQuestion( typeof( BooleanQuestion ) );
             q2Bool.Title = "Third Question in the world!";
 
-            //qBool.Parent = qOpen;
-            //q2Bool.Parent = qBool;
 
             XElement e = f.Questions.ToXml();
 
